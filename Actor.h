@@ -17,9 +17,14 @@ public:
 	inline void SetX(int NewX) { X = NewX; }
 	inline void SetY(int NewY) { Y = NewY; }
 
-	inline bool operator<(const AActor* RHS) const
+	virtual bool operator<(const AActor& RHS) const
 	{
-		return this->SortOrder < RHS->SortOrder;
+		return this->SortOrder < RHS.SortOrder;
+	}
+
+	virtual bool operator>(const AActor& RHS) const
+	{
+		return this->SortOrder > RHS.SortOrder;
 	}
 
 	int SortOrder;
