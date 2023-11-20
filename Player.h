@@ -9,5 +9,7 @@ public:
 	virtual ~APlayer();
 
 	virtual void Tick(int KeyCode) override;
+	bool IsCollide(int NewX, int NewY);
+
 };
 

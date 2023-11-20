@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "SimpleEngine.h"
+#include "World.h"
 
 APlayer::APlayer()
 {
@@ -22,23 +24,53 @@ APlayer::~APlayer()
 
 void APlayer::Tick(int KeyCode)
 {
-//	AActor::Tick(KeyCode);
+	//	AActor::Tick(KeyCode);
 	__super::Tick(KeyCode);
 
 	if (KeyCode == 'A' || KeyCode == 'a')
 	{
-		X--;
+		if (!IsCollide(X - 1, Y))
+		{
+			X--;
+		}
 	}
 	if (KeyCode == 'D' || KeyCode == 'd')
 	{
-		X++;
+		if (!IsCollide(X + 1, Y))
+		{
+			X++;
+		}
 	}
 	if (KeyCode == 'W' || KeyCode == 'w')
 	{
-		Y--;
+		if (!IsCollide(X, Y - 1))
+		{
+			Y--;
+		}
 	}
 	if (KeyCode == 'S' || KeyCode == 's')
 	{
-		Y++;
+		if (!IsCollide(X, Y + 1))
+		{
+			Y++;
+		}
 	}
+}
+
+bool APlayer::IsCollide(int NewX, int NewY)
+{
+	for (const auto& Actor : GEngine->GetWorld()->GetAllActors())
+	{	
+		if (this == Actor)
+		{
+			continue;
+		}
+		if (Actor->bCollide == true &&
+			Actor->GetX() == NewX &&
+			Actor->GetY() == NewY )
+		{
+			return true;
+		}
+	}
+	return false;
 }

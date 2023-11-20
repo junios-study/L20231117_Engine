@@ -1,8 +1,9 @@
 #include "SimpleEngine.h"
 
+
 int main()
 {
-	SimpleEngine* MyEngine = new SimpleEngine();
+	SimpleEngine* MyEngine = SimpleEngine::GetInstance();
 
 	MyEngine->LoadLevel("a.smap");
 	MyEngine->Run();

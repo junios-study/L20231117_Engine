@@ -15,6 +15,11 @@ public:
 	void Render();
 
 	void SortRenderOrder();
+
+	const std::vector<AActor*>& GetAllActors()
+	{
+		return Actors;
+	}
 protected:
 
 	std::vector<AActor*> Actors;

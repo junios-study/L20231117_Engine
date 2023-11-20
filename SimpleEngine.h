@@ -6,8 +6,10 @@ class AActor;
 
 class SimpleEngine
 {
-public:
+private:
 	SimpleEngine();
+
+public:
 	virtual ~SimpleEngine();
 
 	void Init();
@@ -22,6 +24,15 @@ public:
 
 	inline UWorld* GetWorld() const { return World; };
 
+	static SimpleEngine* GetInstance()
+	{ 
+		if (Instance == nullptr)
+		{
+			Instance = new SimpleEngine();
+		}
+		return Instance;
+	}
+
 protected:
 	UWorld* World;
 	bool IsRunning;
@@ -29,5 +40,10 @@ protected:
 	int Input();
 	void Tick(int KeyCode);
 	void Render();
+
+	static SimpleEngine* Instance;
 };
+
+#define GEngine SimpleEngine::GetInstance()
+
 

@@ -3,8 +3,9 @@
 #include <iostream>
 
 AActor::AActor() :
-	X(0), Y(0), Shape(' '), SortOrder(0)
+	X(0), Y(0), Shape(' '), SortOrder(0), bCollide(false)
 {
+
 	//X = 0;
 	//Y = 0;
 }
@@ -15,6 +16,7 @@ AActor::AActor(int NewX, int NewY)
 	SetY(NewY);
 	Shape = ' ';
 	SortOrder = 0;
+	bCollide = false;
 }
 
 AActor::~AActor()

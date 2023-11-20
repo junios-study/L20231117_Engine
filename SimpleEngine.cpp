@@ -18,6 +18,9 @@
 //*       G*
 //**********
 
+SimpleEngine* SimpleEngine::Instance = nullptr;
+
+
 SimpleEngine::SimpleEngine()
 {
 	Init();
@@ -69,21 +72,21 @@ void SimpleEngine::LoadLevel(std::string Filename)
 	//file πŸ≤Ÿ¿⁄, ∆≤¿Ã πŸ≤„ ¡Ÿ≤®¿”
 	std::string Map[10] = {
 	//char Map[10][11] = {
-		"**********",
-		"*P       *",
-		"*        *",
-		"*        *",
-		"*     M  *",
-		"*        *",
-		"*        *",
-		"*        *",
-		"*       G*",
-		"**********"
+		"********************",
+		"*P                 *",
+		"*                  *",
+		"*        M         *",
+		"*   M              *",
+		"*                  *",
+		"*                  *",
+		"*                  *",
+		"*            G     *",
+		"********************"
 	};
 
 	for (int Y = 0; Y < 10; ++Y)
 	{
-		for (int X = 0; X < 10; ++X)
+		for (int X = 0; X < Map[Y].length(); ++X)
 		{
 			if (Map[Y][X] == '*')
 			{

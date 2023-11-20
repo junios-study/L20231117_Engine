@@ -28,6 +28,7 @@ public:
 	}
 
 	int SortOrder;
+	bool bCollide;
 
 protected:
 	int X;

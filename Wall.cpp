@@ -6,6 +6,7 @@ AWall::AWall()
 	Y = 0;
 	Shape = '*';
 	SortOrder = 100;
+	bCollide = true;
 }
 
 AWall::AWall(int NewX, int NewY, char NewShape, int NewSortOrder)
@@ -14,6 +15,7 @@ AWall::AWall(int NewX, int NewY, char NewShape, int NewSortOrder)
 	SetX(NewX);
 	SetY(NewY);
 	SortOrder = NewSortOrder;
+	bCollide = true;
 }
 
 AWall::~AWall()
