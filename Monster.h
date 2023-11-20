@@ -4,7 +4,7 @@ class AMonster : public AActor
 {
 public:
 	AMonster();
-	AMonster(int NewX, int NewY, char NewShape = 'M');
+	AMonster(int NewX, int NewY, char NewShape = 'M', int NewSortOrder = 300);
 	virtual ~AMonster();
 };
 

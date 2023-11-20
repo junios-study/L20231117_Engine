@@ -3,7 +3,7 @@
 #include <iostream>
 
 AActor::AActor() :
-	X(0), Y(0), Shape(' ')
+	X(0), Y(0), Shape(' '), SortOrder(0)
 {
 	//X = 0;
 	//Y = 0;
@@ -14,6 +14,7 @@ AActor::AActor(int NewX, int NewY)
 	SetX(NewX);
 	SetY(NewY);
 	Shape = ' ';
+	SortOrder = 0;
 }
 
 AActor::~AActor()

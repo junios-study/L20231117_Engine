@@ -13,6 +13,8 @@ public:
 
 	void Tick(int KeyCode);
 	void Render();
+
+	void SortRenderOrder();
 protected:
 
 	std::vector<AActor*> Actors;

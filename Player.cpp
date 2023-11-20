@@ -5,13 +5,15 @@ APlayer::APlayer()
 	Shape = 'P';
 	X = 10;
 	Y = 10;
+	SortOrder = 500;
 }
 
-APlayer::APlayer(int NewX, int NewY)
+APlayer::APlayer(int NewX, int NewY, char NewShape, int NewSortOrder)
 {
-	Shape = 'P';
+	Shape = NewShape;
 	SetX(NewX);
 	SetY(NewY);
+	SortOrder = NewSortOrder;
 }
 
 APlayer::~APlayer()

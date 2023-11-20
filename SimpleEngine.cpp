@@ -110,10 +110,11 @@ void SimpleEngine::LoadLevel(std::string Filename)
 				//Floor
 			}
 			//Floor
-			//GetWorld()->SpawnActor(new AFloor(X, Y));
-
+			GetWorld()->SpawnActor(new AFloor(X, Y));
 		}
 	}
+
+	GetWorld()->SortRenderOrder();
 }
 
 int SimpleEngine::Input()
