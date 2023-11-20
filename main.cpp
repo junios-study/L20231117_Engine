@@ -46,7 +46,9 @@ int main()
 	NHRS.push_back(NHR(40));
 	NHRS.push_back(NHR(50));
 	//sort(NHRS.begin(), NHRS.end(), less<NHR>());
-	sort(NHRS.begin(), NHRS.end(), compare);
+	sort(NHRS.begin(), NHRS.end(), [](const NHR& LHS, const NHR& RHS) {
+		return LHS.Money < RHS.Money;
+		});
 
 	for (const auto& Data : NHRS)
 	{
