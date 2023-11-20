@@ -3,6 +3,7 @@ class AActor
 {
 public:
 	AActor();
+	AActor(int NewX, int NewY);
 	virtual ~AActor();
 
 	virtual void BeginPlay();
@@ -19,5 +20,7 @@ public:
 protected:
 	int X;
 	int Y;
+
+	char Shape;
 };
 

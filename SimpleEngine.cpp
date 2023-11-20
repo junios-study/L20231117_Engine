@@ -1,6 +1,7 @@
 #include "SimpleEngine.h"
 #include "World.h"
 #include <conio.h>
+#include "Player.h"
 
 //**********
 //*P       *
@@ -34,8 +35,10 @@ void SimpleEngine::Run()
 	while (IsRunning)
 	{
 		int KeyCode = Input();
-		//Tick
-		//Render
+		Tick(KeyCode);
+		//Clear Screen
+		system("cls");
+		Render();
 	}
 }
 
@@ -52,6 +55,12 @@ void SimpleEngine::Term()
 
 void SimpleEngine::LoadLevel(std::string Filename)
 {
+	//Save
+	//Memory -> Disk : Serialize , Text(JSON, csv), binary(umap)
+
+	//Load
+	//Disk -> Memory : Deserialize
+	GetWorld()->SpawnActor(new APlayer(10, 10));
 }
 
 int SimpleEngine::Input()
