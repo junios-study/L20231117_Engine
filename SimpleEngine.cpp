@@ -2,6 +2,7 @@
 #include "World.h"
 #include <conio.h>
 #include "Player.h"
+#include "Wall.h"
 
 //**********
 //*P       *
@@ -61,6 +62,9 @@ void SimpleEngine::LoadLevel(std::string Filename)
 	//Load
 	//Disk -> Memory : Deserialize
 	GetWorld()->SpawnActor(new APlayer(10, 10));
+	GetWorld()->SpawnActor(new AWall(0, 0));
+	GetWorld()->SpawnActor(new AWall(1, 0));
+	GetWorld()->SpawnActor(new AWall(0, 1));
 }
 
 int SimpleEngine::Input()

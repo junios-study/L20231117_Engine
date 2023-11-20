@@ -1,4 +1,6 @@
 #include "SimpleEngine.h"
+#include "Player.h"
+#include "World.h"
 
 int main()
 {
