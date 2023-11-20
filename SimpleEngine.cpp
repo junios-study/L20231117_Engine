@@ -3,6 +3,9 @@
 #include <conio.h>
 #include "Player.h"
 #include "Wall.h"
+#include "Goal.h"
+#include "Floor.h"
+#include "Monster.h"
 
 //**********
 //*P       *
@@ -61,10 +64,56 @@ void SimpleEngine::LoadLevel(std::string Filename)
 
 	//Load
 	//Disk -> Memory : Deserialize
-	GetWorld()->SpawnActor(new APlayer(10, 10));
-	GetWorld()->SpawnActor(new AWall(0, 0));
-	GetWorld()->SpawnActor(new AWall(1, 0));
-	GetWorld()->SpawnActor(new AWall(0, 1));
+
+
+	//file 바꾸자, 틀이 바꿔 줄꺼임
+	std::string Map[10] = {
+	//char Map[10][11] = {
+		"**********",
+		"*P       *",
+		"*        *",
+		"*        *",
+		"*     M  *",
+		"*        *",
+		"*        *",
+		"*        *",
+		"*       G*",
+		"**********"
+	};
+
+	for (int Y = 0; Y < 10; ++Y)
+	{
+		for (int X = 0; X < 10; ++X)
+		{
+			if (Map[Y][X] == '*')
+			{
+				//Wall
+				GetWorld()->SpawnActor(new AWall(X, Y));
+			}
+			else if (Map[Y][X] == 'P')
+			{
+				//Player
+				GetWorld()->SpawnActor(new APlayer(X, Y));
+			}
+			else if (Map[Y][X] == 'M')
+			{
+				//Monster
+				GetWorld()->SpawnActor(new AMonster(X, Y));
+			}
+			else if (Map[Y][X] == 'G')
+			{
+				//Goal
+				GetWorld()->SpawnActor(new AGoal(X, Y));
+			}
+			else if (Map[Y][X] == ' ')
+			{
+				//Floor
+			}
+			//Floor
+			GetWorld()->SpawnActor(new AFloor(X, Y));
+
+		}
+	}
 }
 
 int SimpleEngine::Input()
