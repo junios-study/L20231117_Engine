@@ -19,6 +19,7 @@
 //**********
 
 SimpleEngine* SimpleEngine::Instance = nullptr;
+int SimpleEngine::KeyCode = 0;
 
 
 SimpleEngine::SimpleEngine()
@@ -41,8 +42,8 @@ void SimpleEngine::Run()
 {
 	while (IsRunning)
 	{
-		int KeyCode = Input();
-		Tick(KeyCode);
+		Input();
+		Tick();
 		//Clear Screen
 		system("cls");
 		Render();
@@ -120,16 +121,14 @@ void SimpleEngine::LoadLevel(std::string Filename)
 	GetWorld()->SortRenderOrder();
 }
 
-int SimpleEngine::Input()
+void SimpleEngine::Input()
 {
-	int KeyCode = _getch();
-
-	return KeyCode;
+	KeyCode = _getch();
 }
 
-void SimpleEngine::Tick(int KeyCode)
+void SimpleEngine::Tick()
 {
-	GetWorld()->Tick(KeyCode);
+	GetWorld()->Tick();
 }
 
 void SimpleEngine::Render()

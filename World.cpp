@@ -19,11 +19,11 @@ void UWorld::SpawnActor(AActor* NewActor)
 	}
 }
 
-void UWorld::Tick(int KeyCode)
+void UWorld::Tick()
 {
 	for (auto Actor : Actors)
 	{
-		Actor->Tick(KeyCode);
+		Actor->Tick();
 	}
 }
 

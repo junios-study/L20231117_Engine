@@ -27,7 +27,7 @@ void AActor::BeginPlay()
 {
 }
 
-void AActor::Tick(int KeyCode)
+void AActor::Tick()
 {
 }
 

@@ -7,7 +7,7 @@ public:
 	virtual ~AActor();
 
 	virtual void BeginPlay();
-	virtual void Tick(int KeyCode);
+	virtual void Tick();
 	virtual void Render();
 
 	//accessor

@@ -33,12 +33,14 @@ public:
 		return Instance;
 	}
 
+	static int KeyCode;
+
 protected:
 	UWorld* World;
 	bool IsRunning;
 
-	int Input();
-	void Tick(int KeyCode);
+	void Input();
+	void Tick();
 	void Render();
 
 	static SimpleEngine* Instance;

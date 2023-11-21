@@ -8,7 +8,7 @@ public:
 	APlayer(int NewX, int NewY, char NewShape = 'P', int NewSortOrder = 500);
 	virtual ~APlayer();
 
-	virtual void Tick(int KeyCode) override;
+	virtual void Tick() override;
 	bool IsCollide(int NewX, int NewY);
 
 };
