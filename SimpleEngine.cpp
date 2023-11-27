@@ -6,6 +6,7 @@
 #include "Goal.h"
 #include "Floor.h"
 #include "Monster.h"
+#include "GameMode.h"
 
 //**********
 //*P       *
@@ -119,6 +120,8 @@ void SimpleEngine::LoadLevel(std::string Filename)
 	}
 
 	GetWorld()->SortRenderOrder();
+
+	GetWorld()->SpawnActor(new AGameMode());
 }
 
 void SimpleEngine::Input()
