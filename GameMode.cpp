@@ -14,23 +14,26 @@ AGameMode::~AGameMode()
 {
 }
 
-void AGameMode::Tick()
+void AGameMode::Tick() //Server
 {
 	AActor::Tick();
-	APlayer* MyPlayer = nullptr;
-	AGoal* MyGoal = nullptr;
-	for (auto Actor : GEngine->GetWorld()->GetAllActors())
+	static APlayer* MyPlayer = nullptr;
+	static AGoal* MyGoal = nullptr;
+	if (!MyGoal || !MyPlayer)
 	{
-		APlayer* TempMyPlayer = dynamic_cast<APlayer*>(Actor);
-		if (TempMyPlayer)
+		for (auto Actor : GEngine->GetWorld()->GetAllActors())
 		{
-			MyPlayer = TempMyPlayer;
-		}
+			APlayer* TempMyPlayer = dynamic_cast<APlayer*>(Actor);
+			if (TempMyPlayer)
+			{
+				MyPlayer = TempMyPlayer;
+			}
 
-		AGoal* TempMyGoal = dynamic_cast<AGoal*>(Actor);
-		if (TempMyGoal)
-		{
-			MyGoal = TempMyGoal;
+			AGoal* TempMyGoal = dynamic_cast<AGoal*>(Actor);
+			if (TempMyGoal)
+			{
+				MyGoal = TempMyGoal;
+			}
 		}
 	}
 
