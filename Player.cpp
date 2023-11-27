@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "SimpleEngine.h"
 #include "World.h"
+#include "Goal.h"
+#include "GameState.h"
 
 APlayer::APlayer()
 {
@@ -60,6 +62,20 @@ void APlayer::Tick()
 	{
 		GEngine->Stop();
 	}
+
+	AGoal* MyGoal = nullptr;
+	for (auto Actor : GEngine->GetWorld()->GetAllActors())
+	{
+		MyGoal = dynamic_cast<AGoal*>(Actor);
+		if (MyGoal&& 
+			MyGoal->GetX() == X &&
+			MyGoal->GetY() == Y)
+		{
+			SimpleEngine::GetGameState()->IsNextLevel = true;
+			break;
+		}
+	}
+
 }
 
 bool APlayer::IsCollide(int NewX, int NewY)

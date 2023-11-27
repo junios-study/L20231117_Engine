@@ -7,6 +7,7 @@
 #include "Floor.h"
 #include "Monster.h"
 #include "GameMode.h"
+#include "GameState.h"
 
 //**********
 //*P       *
@@ -25,6 +26,8 @@ int SimpleEngine::KeyCode = 0;
 
 SimpleEngine::SimpleEngine()
 {
+	GameMode = nullptr;
+	GameState = nullptr;
 	Init();
 }
 
@@ -58,6 +61,8 @@ void SimpleEngine::Stop()
 
 void SimpleEngine::Term()
 {
+	GameMode = nullptr;
+	GameState = nullptr;
 	IsRunning = false;
 	delete World;
 }
@@ -121,7 +126,10 @@ void SimpleEngine::LoadLevel(std::string Filename)
 
 	GetWorld()->SortRenderOrder();
 
-	GetWorld()->SpawnActor(new AGameMode());
+	GameMode = new AGameMode();
+	GetWorld()->SpawnActor(GameMode);
+	GameState = new AGameState();
+	GetWorld()->SpawnActor(GameState);
 }
 
 void SimpleEngine::Input()

@@ -2,7 +2,9 @@
 #include <string>
 
 class UWorld;
-class AActor;
+class AActor; 
+class AGameMode;
+class AGameState;
 
 class SimpleEngine
 {
@@ -35,6 +37,16 @@ public:
 
 	static int KeyCode;
 
+	static AGameState* GetGameState()
+	{
+		return GetInstance()->GameState;
+	}
+
+	static AGameMode* GetGameMode()
+	{
+		return GetInstance()->GameMode;
+	}
+
 protected:
 	UWorld* World;
 	bool IsRunning;
@@ -44,6 +56,9 @@ protected:
 	void Render();
 
 	static SimpleEngine* Instance;
+
+	AGameMode* GameMode;
+	AGameState* GameState;
 };
 
 #define GEngine SimpleEngine::GetInstance()

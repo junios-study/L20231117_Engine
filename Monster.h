@@ -6,5 +6,16 @@ public:
 	AMonster();
 	AMonster(int NewX, int NewY, char NewShape = 'M', int NewSortOrder = 300);
 	virtual ~AMonster();
+
+	virtual void Tick() override;
+	bool IsCollide(int NewX, int NewY);
+};
+
+enum class EMonsterDirection
+{
+	Left = 0,
+	Right = 1,
+	Down,
+	Up
 };
 

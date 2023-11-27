@@ -4,10 +4,11 @@
 #include "SimpleEngine.h"
 #include "World.h"
 #include <iostream>
+#include "GameState.h"
 
 AGameMode::AGameMode()
 {
-	SortOrder = 0;
+	SortOrder = 1000;
 }
 
 AGameMode::~AGameMode()
@@ -17,31 +18,16 @@ AGameMode::~AGameMode()
 void AGameMode::Tick() //Server
 {
 	AActor::Tick();
-	static APlayer* MyPlayer = nullptr;
-	static AGoal* MyGoal = nullptr;
-	if (!MyGoal || !MyPlayer)
-	{
-		for (auto Actor : GEngine->GetWorld()->GetAllActors())
-		{
-			APlayer* TempMyPlayer = dynamic_cast<APlayer*>(Actor);
-			if (TempMyPlayer)
-			{
-				MyPlayer = TempMyPlayer;
-			}
 
-			AGoal* TempMyGoal = dynamic_cast<AGoal*>(Actor);
-			if (TempMyGoal)
-			{
-				MyGoal = TempMyGoal;
-			}
-		}
-	}
-
-	if (MyPlayer && MyGoal &&
-		MyGoal->GetX() == MyPlayer->GetX() &&
-		MyGoal->GetY() == MyPlayer->GetY() )
+	if (SimpleEngine::GetGameState()->IsNextLevel)
 	{
 		std::cout << "Complete" << std::endl;
+		GEngine->Stop();
+	}
+
+	if (SimpleEngine::GetGameState()->IsGameOver)
+	{
+		std::cout << "GameOver" << std::endl;
 		GEngine->Stop();
 	}
 
