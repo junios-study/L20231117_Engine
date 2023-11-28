@@ -30,6 +30,11 @@ void APlayer::Tick()
 	__super::Tick();
 	int KeyCode = SimpleEngine::KeyCode;
 
+	if (SimpleEngine::GetGameState()->IsGameOver)
+	{
+		return;
+	}
+
 	if (KeyCode == 'A' || KeyCode == 'a')
 	{
 		if (!IsCollide(X - 1, Y))
