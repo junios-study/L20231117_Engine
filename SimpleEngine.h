@@ -59,6 +59,8 @@ protected:
 
 	AGameMode* GameMode;
 	AGameState* GameState;
+
+	void LoadActor(int NewX, int NewY, char Actor);
 };
 
 #define GEngine SimpleEngine::GetInstance()
