@@ -71,6 +71,9 @@ void SimpleEngine::Term()
 
 void SimpleEngine::LoadLevel(std::string Filename)
 {
+	Term();
+	Init();
+
 	int Y = 0;
 	std::string line;
 	std::ifstream file(Filename);
