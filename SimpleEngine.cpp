@@ -58,14 +58,15 @@ void SimpleEngine::Run()
 	{
 		DeltaSeconds = SDL_GetTicks64() - LastTime;
 		LastTime = SDL_GetTicks64();
-		SDL_PollEvent(&MyEvent);
+
+		Input();
+
 		switch (MyEvent.type)
 		{
 		case SDL_QUIT:
 			IsRunning = false;
 			break;
 		case SDL_KEYDOWN:
-			Input();
 			if (MyEvent.key.keysym.sym == SDLK_ESCAPE)
 			{
 				IsRunning = false;
@@ -133,7 +134,7 @@ void SimpleEngine::LoadLevel(std::string Filename)
 
 void SimpleEngine::Input()
 {
-	KeyCode = MyEvent.key.keysym.sym;
+	SDL_PollEvent(&MyEvent);
 }
 
 void SimpleEngine::Tick()

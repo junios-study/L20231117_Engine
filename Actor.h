@@ -34,6 +34,8 @@ public:
 	int SortOrder;
 	bool bCollide;
 
+	Uint16 Size;
+
 protected:
 	int X;
 	int Y;

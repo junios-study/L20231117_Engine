@@ -29,7 +29,14 @@ void APlayer::Tick()
 {
 	//	AActor::Tick(KeyCode);
 	__super::Tick();
-	int KeyCode = SimpleEngine::KeyCode;
+	//int KeyCode = SimpleEngine::KeyCode;
+	int KeyCode = GEngine->MyEvent.key.keysym.sym;
+
+	if (GEngine->MyEvent.type == SDL_KEYDOWN)
+	{
+		return;
+	}
+
 
 	if (SimpleEngine::GetGameState()->IsGameOver)
 	{
