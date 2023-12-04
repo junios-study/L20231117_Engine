@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main()
+int SDL_main(int argc, char* argv[])
 {
 	SimpleEngine* MyEngine = SimpleEngine::GetInstance();
 

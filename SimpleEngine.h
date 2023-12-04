@@ -1,5 +1,10 @@
 #pragma once
 #include <string>
+#include "SDL.h"
+
+#pragma comment(lib, "SDL2")
+#pragma comment(lib, "SDL2main")
+
 
 class UWorld;
 class AActor; 
@@ -35,7 +40,7 @@ public:
 		return Instance;
 	}
 
-	static int KeyCode;
+	static SDL_Keycode KeyCode;
 
 	static AGameState* GetGameState()
 	{
@@ -46,6 +51,12 @@ public:
 	{
 		return GetInstance()->GameMode;
 	}
+
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
+	SDL_Event MyEvent;
+	Uint64 DeltaSeconds;
+	Uint64 LastTime;
 
 protected:
 	UWorld* World;

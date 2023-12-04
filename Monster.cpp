@@ -39,7 +39,7 @@ void AMonster::Tick()
 			MyPlayer->GetX() == X &&
 			MyPlayer->GetY() == Y)
 		{
-			SimpleEngine::GetGameState()->IsGameOver = true;
+			//SimpleEngine::GetGameState()->IsGameOver = true;
 			return;
 		}
 	}

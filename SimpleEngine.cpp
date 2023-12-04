@@ -30,12 +30,20 @@ SimpleEngine::SimpleEngine()
 {
 	GameMode = nullptr;
 	GameState = nullptr;
+	SDL_Init(SDL_INIT_EVERYTHING);
+	MyWindow = SDL_CreateWindow("HelloWorld", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
+	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+
 	Init();
 }
 
 SimpleEngine::~SimpleEngine()
 {
 	Term();
+
+	SDL_DestroyRenderer(MyRenderer);
+	SDL_DestroyWindow(MyWindow);
+	SDL_Quit();
 }
 
 void SimpleEngine::Init()
@@ -48,10 +56,23 @@ void SimpleEngine::Run()
 {
 	while (IsRunning)
 	{
-		Input();
+		SDL_PollEvent(&MyEvent);
+		switch (MyEvent.type)
+		{
+		case SDL_QUIT:
+			IsRunning = false;
+			break;
+		case SDL_KEYDOWN:
+			Input();
+			if (MyEvent.key.keysym.sym == SDLK_ESCAPE)
+			{
+				IsRunning = false;
+			}
+			break;
+		}
 		Tick();
 		//Clear Screen
-		system("cls");
+		//system("cls");
 		Render();
 	}
 }
@@ -105,7 +126,7 @@ void SimpleEngine::LoadLevel(std::string Filename)
 
 void SimpleEngine::Input()
 {
-	KeyCode = _getch();
+	KeyCode = MyEvent.key.keysym.sym;
 }
 
 void SimpleEngine::Tick()
