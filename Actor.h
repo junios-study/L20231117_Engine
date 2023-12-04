@@ -1,4 +1,6 @@
 #pragma once
+#include "SDL.h"
+
 class AActor
 {
 public:
@@ -26,6 +28,8 @@ public:
 	{
 		return this->SortOrder > RHS.SortOrder;
 	}
+
+	SDL_Color Color;
 
 	int SortOrder;
 	bool bCollide;

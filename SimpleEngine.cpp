@@ -56,6 +56,8 @@ void SimpleEngine::Run()
 {
 	while (IsRunning)
 	{
+		DeltaSeconds = SDL_GetTicks64() - LastTime;
+		LastTime = SDL_GetTicks64();
 		SDL_PollEvent(&MyEvent);
 		switch (MyEvent.type)
 		{
@@ -73,7 +75,12 @@ void SimpleEngine::Run()
 		Tick();
 		//Clear Screen
 		//system("cls");
+		SDL_SetRenderDrawColor(GEngine->MyRenderer, 0, 0, 0, 0);
+		SDL_RenderClear(GEngine->MyRenderer);
+
 		Render();
+
+		SDL_RenderPresent(GEngine->MyRenderer);
 	}
 }
 

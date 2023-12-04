@@ -9,13 +9,14 @@ AWall::AWall()
 	bCollide = true;
 }
 
-AWall::AWall(int NewX, int NewY, char NewShape, int NewSortOrder)
+AWall::AWall(int NewX, int NewY, char NewShape, int NewSortOrder, SDL_Color NewColor)
 {
 	Shape = NewShape;
 	SetX(NewX);
 	SetY(NewY);
 	SortOrder = NewSortOrder;
 	bCollide = true;
+	Color = NewColor;
 }
 
 AWall::~AWall()

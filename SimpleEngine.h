@@ -52,6 +52,11 @@ public:
 		return GetInstance()->GameMode;
 	}
 
+	static Uint64 GetWorldDeltaSeconds() 
+	{
+		return GetInstance()->DeltaSeconds;
+	}
+
 	SDL_Window* MyWindow;
 	SDL_Renderer* MyRenderer;
 	SDL_Event MyEvent;

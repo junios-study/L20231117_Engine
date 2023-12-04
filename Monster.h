@@ -4,7 +4,7 @@ class AMonster : public AActor
 {
 public:
 	AMonster();
-	AMonster(int NewX, int NewY, char NewShape = 'M', int NewSortOrder = 300);
+	AMonster(int NewX, int NewY, char NewShape = 'M', int NewSortOrder = 300, SDL_Color NewColor = SDL_Color{ 0, 0, 255, 0 });
 	virtual ~AMonster();
 
 	virtual void Tick() override;

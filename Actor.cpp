@@ -1,6 +1,7 @@
 #include "Actor.h"
 #include <windows.h>
 #include <iostream>
+#include "SimpleEngine.h"
 
 AActor::AActor() :
 	X(0), Y(0), Shape(' '), SortOrder(0), bCollide(false)
@@ -40,4 +41,8 @@ void AActor::Render()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 
 	std::cout << Shape ;
+
+	SDL_SetRenderDrawColor(GEngine->MyRenderer, Color.r, Color.g, Color.b, Color.a);
+	SDL_RenderDrawPoint(GEngine->MyRenderer, X, Y);
+	
 }

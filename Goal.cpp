@@ -8,12 +8,13 @@ AGoal::AGoal()
 	SortOrder = 200;
 }
 
-AGoal::AGoal(int NewX, int NewY, char NewShape, int NewSortOrder)
+AGoal::AGoal(int NewX, int NewY, char NewShape, int NewSortOrder, SDL_Color NewColor)
 {
 	Shape = NewShape;
 	X = NewX;
 	Y = NewY;
 	SortOrder = NewSortOrder;
+	Color = NewColor;
 }
 
 AGoal::~AGoal()
