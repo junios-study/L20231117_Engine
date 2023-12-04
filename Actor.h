@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include <iostream>
 
 class AActor
 {
@@ -35,6 +36,15 @@ public:
 	bool bCollide;
 
 	Uint16 Size;
+
+	SDL_Surface* MySurface;
+	SDL_Texture* MyTexture;
+
+	bool bIsSprite;
+	int SpriteSizeX;
+	int SpriteSizeY;
+
+	virtual void LoadBMP(std::string Filename, SDL_Color ColorKey = SDL_Color {255, 255, 255, 0});
 
 protected:
 	int X;

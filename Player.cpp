@@ -19,6 +19,10 @@ APlayer::APlayer(int NewX, int NewY, char NewShape, int NewSortOrder, SDL_Color 
 	SetY(NewY);
 	SortOrder = NewSortOrder;
 	Color = NewColor;
+	LoadBMP("Data/Player.bmp", SDL_Color{ 255, 0, 255, 0 });
+	bIsSprite = true;
+	SpriteSizeX = 5;
+	SpriteSizeY = 5;
 }
 
 APlayer::~APlayer()
@@ -71,7 +75,7 @@ void APlayer::Tick()
 			Y++;
 		}
 	}
-	if (KeyCode == SDLK_ESCAPE )
+	if (KeyCode == SDLK_ESCAPE)
 	{
 		GEngine->Stop();
 	}
@@ -80,7 +84,7 @@ void APlayer::Tick()
 	for (auto Actor : GEngine->GetWorld()->GetAllActors())
 	{
 		MyGoal = dynamic_cast<AGoal*>(Actor);
-		if (MyGoal&& 
+		if (MyGoal &&
 			MyGoal->GetX() == X &&
 			MyGoal->GetY() == Y)
 		{
@@ -94,14 +98,14 @@ void APlayer::Tick()
 bool APlayer::IsCollide(int NewX, int NewY)
 {
 	for (const auto& Actor : GEngine->GetWorld()->GetAllActors())
-	{	
+	{
 		if (this == Actor)
 		{
 			continue;
 		}
 		if (Actor->bCollide == true &&
 			Actor->GetX() == NewX &&
-			Actor->GetY() == NewY )
+			Actor->GetY() == NewY)
 		{
 			return true;
 		}

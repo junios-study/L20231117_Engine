@@ -15,6 +15,8 @@ AFloor::AFloor(int NewX, int NewY, char NewShape, int NewSortOrder, SDL_Color Ne
 	SetY(NewY);
 	SortOrder = NewSortOrder;
 	Color = NewColor;
+	LoadBMP("Data/floor.bmp");
+
 }
 
 AFloor::~AFloor()

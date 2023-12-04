@@ -9,6 +9,10 @@ public:
 
 	virtual void Tick() override;
 	bool IsCollide(int NewX, int NewY);
+
+	Uint64 ProcessTime;
+
+	Uint64 ElaspedTime;
 };
 
 enum class EMonsterDirection

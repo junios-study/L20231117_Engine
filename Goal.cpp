@@ -15,6 +15,8 @@ AGoal::AGoal(int NewX, int NewY, char NewShape, int NewSortOrder, SDL_Color NewC
 	Y = NewY;
 	SortOrder = NewSortOrder;
 	Color = NewColor;
+	LoadBMP("Data/Goal.bmp");
+
 }
 
 AGoal::~AGoal()
